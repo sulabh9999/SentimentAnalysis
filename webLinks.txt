@@ -1,0 +1,21 @@
+// AWS boto3 example codes
+https://whiletrue.run/2017/12/13/aws-comprehend-translate-transcribe/
+
+
+// list of Artificial Intelligence tools
+https://medium.com/@LiamHanel/a-list-of-artificial-intelligence-tools-you-can-use-today-for-businesses-2-3-eea3ac374835
+
+https://spacy.io/
+
+// topic modeling using Gensim module
+https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/
+https://medium.com/@connectwithghosh/topic-modelling-with-latent-dirichlet-allocation-lda-in-pyspark-2cb3ebd5678e
+
+// get sentiment using textblob
+import nltk
+from textblob import TextBlob
+nltk.download('brown')
+
+blob = TextBlob(text)
+df['sentiment'] = [blob.polarity]
+df.to_csv(output_file, sep='\t', encoding='utf-8')
