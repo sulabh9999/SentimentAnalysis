@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 # return dataframe between given dates
-def getData(file_Path, start_date=None, end_date=None):
+def getComments(file_Path, start_date=None, end_date=None):
     df = pd.read_csv(file_Path, sep='\t', usecols=['comments', 'ratings', 'dates']) 
 
     if (start_date and end_date) is not None:
@@ -15,5 +15,12 @@ def getData(file_Path, start_date=None, end_date=None):
         df = df.loc[(dateField>=start) & (dateField<=end)]
     return df
 
+
+
+
+# return dataframe between given dates
+def getEmojis(file_Path):
+    df = pd.read_csv(file_Path, usecols=['Emoji', 'Final_Result']) 
+    return  df #pd.read_csv(file_Path) 
 
     
