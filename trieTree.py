@@ -26,7 +26,7 @@ class Trie:
         asciiChar = ord(ch)-ord('a')
         if asciiChar >= 0:
             return asciiChar
-        return  0
+        return 0
 
 
     def insert(self, key): 
@@ -47,34 +47,11 @@ class Trie:
             if not pCrawl.children[index]: 
                 return False
             pCrawl = pCrawl.children[index] 
-        
         return pCrawl != None and pCrawl.isEndOfWord
+    
+    def search(self, sentence):
+        pass
         # TODO: need to set Enum
 #             return TrieStatus.matched
 #         elif pCrawl != None and pCrawl.isEndOfWord::
             
-
-# # driver function 
-# def main(): 
-
-# 	# Input keys (use only 'a' through 'z' and lower case) 
-# 	keys = ["the","a","there","anaswe","any", 
-# 			"by","their"] 
-# 	output = ["Not present in trie", "Present in tire"] 
-
-# 	# Trie object 
-# 	t = Trie() 
-
-# 	# Construct trie 
-# 	for key in keys: 
-# 		t.insert(key) 
-
-# 	# Search for different keys 
-# 	print("{} ---- {}".format("the",output[t.search("the")])) 
-# 	print("{} ---- {}".format("these",output[t.search("these")])) 
-# 	print("{} ---- {}".format("their",output[t.search("their")])) 
-# 	print("{} ---- {}".format("thaw",output[t.search("thaw")])) 
-
-# if __name__ == '__main__': 
-# 	main() 
-
