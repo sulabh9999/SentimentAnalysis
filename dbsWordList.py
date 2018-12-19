@@ -47,27 +47,30 @@ class DBSWordList():
 
     def searchBySentence(self, sentence):
         wordList = list(map(lambda word: self.removeSpecialChar(word), sentence.split(' '))) 
+#         print('..split for ##%s## is: ##%s##' %(sentence, wordList))
         outputWordList = []
         length = len(wordList)
         for i in range(length):
-            finalMatch = ''
+#             finalMatch = ''
             currStr = wordList[i]
             result = self.trie.search(currStr)
+#             print('..status for ##%s## is @@%s@@' %(currStr, result))
 #             print('result for %s is %s' %(currStr, result))
             if result is TrieStatus.matched:
                 outputWordList.append(currStr)
                 
             if result in TrieStatus.goNext:
-                finalMatch = currStr
+#                 finalMatch = currStr
                 for j in range(i+1, length):
                     currStr = currStr+' '+wordList[j]
                     result = self.trie.search(currStr)
+#                     print('..status... for ##%s## is @@%s@@' %(currStr, result))
                     if result == TrieStatus.matched:
-                        finalMatch = currStr
+                        outputWordList.append(currStr)
                     elif result == TrieStatus.unmatched:
                         break
 #                 print('..finalMatch..', finalMatch)
-                outputWordList.append(finalMatch)
+#                 outputWordList.append(finalMatch)
         return outputWordList  
     
     
