@@ -41,8 +41,9 @@ class SUtility:
         keys = sorted(self.topicWithCountDict.items(), key=lambda x: x[1], reverse=True)
         for each in keys:
             if each[0] in self.topicWithReasonsDict:
-                print('topic: ',  each[0]),
+                print('topic: ',  each[0])
                 self.__showDict( self.topicWithReasonsDict[each[0]])
+                print()
 #         for key, valueDict in self.topicWithReasonsDict.items():
 #             print('topic: ', key),
 #             self.__showDict(valueDict)

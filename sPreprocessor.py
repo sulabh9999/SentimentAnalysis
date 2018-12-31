@@ -6,7 +6,7 @@ from gensim import parsing
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.corpus import wordnet as wn
 from nltk import pos_tag, word_tokenize
-from nltk.stem.porter import *
+from nltk.stem import *
 
 from textblob import TextBlob
 import SNouns
@@ -17,6 +17,9 @@ import re
 # _trie = None
 
 class SPreprocessor:
+    
+    def __init__(self):
+        self.stemmer = SnowballStemmer('english')
     ''' Need to resolve first '''
 #     def resolveDependancy(trie):
 #         global _trie
@@ -42,13 +45,14 @@ class SPreprocessor:
     Words are lemmatized — words in third person are changed to first person and verbs in past and future tenses are changed 
     into present.Words are stemmed — words are reduced to their root form.'''
     def lemmatize_stemming(self, token):
-        stemmer = PorterStemmer() #gensim.parsing.stem_text(tokenize) #
-        for word, tag in pos_tag(word_tokenize(token)):
-            wntag = tag[0].lower()
-            wntag = wntag if wntag in ['a', 'r', 'n', 'v'] else None
-            lemma = WordNetLemmatizer().lemmatize(word, wntag) if wntag else word
-            return TextBlob(lemma).words[0].singularize()
-        return ''
+        return self.stemmer.stem(token)
+#         stemmer = PorterStemmer() #gensim.parsing.stem_text(tokenize) #
+#         for word, tag in pos_tag(word_tokenize(token)):
+#             wntag = tag[0].lower()
+#             wntag = wntag if wntag in ['a', 'r', 'n', 'v'] else None
+#             lemma = WordNetLemmatizer().lemmatize(word, wntag) if wntag else word
+#             return TextBlob(lemma).words[0].singularize()
+#         return ''
 
 
     def filterWord(self, token):
@@ -68,11 +72,18 @@ class SPreprocessor:
 
 
     def filterWords(self, tokens):
-        return list(filter(lambda token: self.filterWord(token), tokens))
+        result = []
+        for each in tokens:
+            if len(each.split(' ')) > 1:
+                result.append(each)
+            else:
+                result.append(self.filterWord(each))
+        return result
 
     
     def splitIntoSentences(self, fullcomment):
         sentence = re.sub('[,.]', '@#@#@', fullcomment) # logging.contacted -> logging contacted
+#         sentence = sentence
         splited = sentence.split('@#@#@')
         return list(filter(None, splited))
     
@@ -101,7 +112,10 @@ class SPreprocessor:
         # removeing None from token array
         trieTopicFilteredTokens = list(filter(None, trieTopicFilteredTokens)) # remove empty from string list
         # filter words by lemma, stemming
+#         print('bafore filter words:', trieTopicFilteredTokens)
         filterByRulsTokens = self.filterWords(trieTopicFilteredTokens)
+#         print('after filter words', filterByRulsTokens)
+#         print()
         result = []
         [x for x in filterByRulsTokens if x not in result and (result.append(x) or True)]  #getNounList('', trieFilterWords)
         return result
