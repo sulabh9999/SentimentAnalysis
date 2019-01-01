@@ -76,7 +76,7 @@ def getListOfComments(betweenDates): # ['start_date', 'end_date']
         commentsList = getComments(comments_file_path, betweenDates[0], betweenDates[1]) #['comments']
         print('Total number of comments: %s between %s and %s' % (len(commentsList), betweenDates[0], betweenDates[1]))
         
-    commentsList = commentsList.sort_values(by='ratings', ascending=True)['comments'] 
+    commentsList = commentsList.query("ratings > 0 and ratings < 3")['comments'] #commentsList.sort_values(by='ratings', ascending=True)['comments'] 
     return commentsList
 
 
