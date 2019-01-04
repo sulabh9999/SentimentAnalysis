@@ -77,7 +77,7 @@ def getListOfComments(betweenDates): # ['start_date', 'end_date']
         print('Total number of comments: %s between %s and %s' % (len(commentsList), betweenDates[0], betweenDates[1]))
         
     #commentsList = commentsList.query("ratings > 0 and ratings < 3")#['comments'] 
-    commentsList = commentsList.sort_values(by='ratings', ascending=True)['comments'] 
-    return commentsList
+    commentsList = commentsList.sort_values(by='ratings', ascending=True)
+    return commentsList.query("ratings > 0 and ratings < 3")['comments'] 
 
 
