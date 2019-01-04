@@ -88,11 +88,14 @@ class SPreprocessor:
         return list(filter(None, splited))
     
     
-    def docCleaning(self, fullComment):
+    def docCleaning(self, fullComment, splitIntoMultSentences = False):
         # tolower case
         fullComment = fullComment.lower()
-        # break comment into multiple sentences
-        multipleSentncs = self.splitIntoSentences(fullComment)
+        multipleSentncs = [fullComment]
+        if splitIntoMultSentences:
+            # break comment into multiple sentences
+            multipleSentncs = self.splitIntoSentences(fullComment)
+            
         result = []
         for sentence in multipleSentncs:
             # remove special chars
