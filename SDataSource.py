@@ -78,6 +78,6 @@ def getListOfComments(betweenDates): # ['start_date', 'end_date']
         
     #commentsList = commentsList.query("ratings > 0 and ratings < 3")#['comments'] 
     commentsList = commentsList.sort_values(by='ratings', ascending=True)
-    return commentsList.query("ratings > 0 and ratings < 3")['comments'] 
+    return commentsList.query("ratings > 3 and ratings < 6")['comments'] 
 
 

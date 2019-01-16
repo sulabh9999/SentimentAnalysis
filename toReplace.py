@@ -6,7 +6,8 @@ def getReplaceDict():
         'pop up': 'popup',
         'sign up': 'signup',
         'never': 'dont',
-        'opening': 'open'
+        'opening': 'open',
+        'unable to': 'cant'
     }
 
 def replaceWords(sentence):
