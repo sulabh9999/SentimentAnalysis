@@ -6,8 +6,7 @@ def getDataSourcePathFor(keyForFilePath):
     import json
     import os
     
-    config_file_path = os.environ[SConstants.virtual_env] + '/config.json'
-
+    config_file_path = '/home/nawaz/.virtualenvs/AWSComp/config.json' #os.environ[SConstants.virtual_env] + '/config.json'
     with open(config_file_path) as f:
         config = json.load(f)
         if keyForFilePath in config:# ['comments_path', 'output_path']
@@ -78,6 +77,6 @@ def getListOfComments(betweenDates): # ['start_date', 'end_date']
         
     #commentsList = commentsList.query("ratings > 0 and ratings < 3")#['comments'] 
     commentsList = commentsList.sort_values(by='ratings', ascending=True)
-    return commentsList.query("ratings > 3 and ratings < 6")['comments'] 
+    return commentsList.query("ratings > 0 and ratings < 3")['comments'] 
 
 

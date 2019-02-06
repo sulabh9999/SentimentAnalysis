@@ -3,8 +3,8 @@ import json
 import os
 
 
-config_file_path = os.environ['VIRTUAL_ENV'] + '/config.json'
-
+config_file_path = '/home/nawaz/.virtualenvs/AWSComp/config.json'##os.environ['V_ENV'] + '/config.json'
+print('file path is:', config_file_path)
 with open(config_file_path) as f:
     config = json.load(f)
     # authentication 
