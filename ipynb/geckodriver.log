@@ -1,0 +1,44 @@
+1550976062900	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.c4mgq8MWQX7b"
+1550976068802	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1550976068802	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1550976076553	Marionette	INFO	Listening on port 34713
+1550976076705	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 20666, Gecko_IOThread] WARNING: pipe error (71): Connection reset by peer: file /build/firefox-1juj5k/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 20666, Gecko_IOThread] WARNING: pipe error (93): Connection reset by peer: file /build/firefox-1juj5k/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1550976161629	Marionette	INFO	Stopped listening on port 34713
+1550976187387	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.5h0aSBkxBvLo"
+1550976188542	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1550976188542	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1550976192413	Marionette	INFO	Listening on port 35211
+1550976192537	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 21134, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /build/firefox-1juj5k/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1550976459513	Marionette	INFO	Stopped listening on port 35211
+1550982993935	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.IyNMmJ3p8RyE"
+1550982999250	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1550982999251	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1550983005909	Marionette	INFO	Listening on port 42189
+1550983007448	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 31479, Gecko_IOThread] WARNING: pipe error (71): Connection reset by peer: file /build/firefox-1juj5k/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1550983062764	Marionette	INFO	Stopped listening on port 42189
+1550983069565	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.o7XRsmL3Zl26"
+1550983070632	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1550983070633	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1550983074671	Marionette	INFO	Listening on port 40657
+1550983074723	Marionette	WARN	TLS certificate errors will be ignored for this session
+1550983686376	Marionette	INFO	Stopped listening on port 40657
