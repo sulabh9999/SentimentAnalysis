@@ -60,16 +60,23 @@ class dbSQL:
             result = self.__execute(query)
             print(each)
         
-    
+    # commentRow: [name, date, commnt]
+    def storeOperation(self, comment_id, process_doc, topics, reasons, date, rating, platform, prouct):
+        for topic in topics:
+            for reason in reasons:
+                data = (comment_id, topic, reason, date, rating, platform, prouct)
+                query = """INSERT INTO `dbs_master` VALUES (NULL, '%s','%s','%s','%s','%s','%s','%s')"""  % (data)
+                result = self.__execute(query)
+                
+                
     def __execute(self, query):
-        print('query is: ', query)
         try:
             self.curs.execute(query)
             result = self.curs.fetchall()
             self.connection.commit()
-            print('-- successful --')
             return result
         except:
+            print('query is: ', query)
             print('--- failed --')
             self.connection.rollback()
         self.connection.close()
