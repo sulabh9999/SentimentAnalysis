@@ -9,8 +9,8 @@ from nltk import pos_tag, word_tokenize
 from nltk.stem import *
 
 from textblob import TextBlob
-import SNouns
-import toReplace
+from . import SNouns
+from . import toReplace
 import re 
 
 # global object for trie WordList

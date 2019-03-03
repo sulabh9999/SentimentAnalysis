@@ -18,19 +18,51 @@ class dbSQL:
         rating = rawData[3]
         
         data = (name, date, comment, rating)
-        qry = """INSERT INTO `android_full_comments`  VALUES (NULL, '%s','%s','%s','%s')"""
+        qry = """INSERT INTO `dbs_master_table`  VALUES (NULL, '%s','%s','%s','%s')"""
         #data = ('sulabh shukla', '2019-02-05', 'nice work ...', '3')
-        #query = """INSERT INTO `android_full_comments`  VALUES (NULL, 'sulabh shukla', '2019-02-05', 'nice work ...', '3');"""
+        #query = """INSERT INTO `dbs_master_table`  VALUES (NULL, 'sulabh shukla', '2019-02-05', 'nice work ...', '3');"""
+        print('query:', qry % data)
+        self.__execute(qry % data)
+    
+    def insertInMaster(self, data):        
+        data = (name, date, comment, rating)
+        qry = """INSERT INTO `dbs_master_table`  VALUES (NULL, '%s','%s','%s','%s')"""
         print('query:', qry % data)
         self.__execute(qry % data)
     
     def show(self):
-        query = """SELECT * FROM `android_full_comments`;"""
+        query = """SELECT * FROM `dbs_master_table`;"""
         results = self.__execute(query)
         for each in results:
             print(each)
+            
+    # store token array into table `dbs_combined_corpus`      
+    def storeWordList(self, wList):
+        for token in wList:
+            token = self.addEsapesequence(token)
+            query = """SELECT * FROM `dbs_combined_corpus` where words='%s';""" % token
+            result = self.__execute(query)
+            maxValue = 0
+            if len(result) == 0:
+                query = """SELECT MAX(hashValue) FROM `dbs_combined_corpus`"""
+                result = self.__execute(query)
+                if result[0][0] != None:
+                    maxValue = result[0][0] + 1
+                query = """INSERT INTO `dbs_combined_corpus`  VALUES (NULL, '%s', '%s')""" % (token,maxValue)
+                result = self.__execute(query)
+            
+    # add data into `dbs_attributes`
+    def store_n_reasons(self, n_reasons):
+        for each in n_reasons:
+            query = """ SELECT hashValue  FROM dbs_combined_corpus WHERE words = '%s'""" % each
+            hashValue = self.__execute(query)[0][0]
+            query = """INSERT INTO `dbs_n_reasons` (id) VALUES ('%s')""" % (hashValue)
+            result = self.__execute(query)
+            print(each)
+        
     
     def __execute(self, query):
+        print('query is: ', query)
         try:
             self.curs.execute(query)
             result = self.curs.fetchall()

@@ -1,6 +1,6 @@
 # from __future__ import with_statement
-from trieTree import Trie
-from trieTree import TrieStatus
+from .trieTree import Trie
+from .trieTree import TrieStatus
 
 
 class SWordList():
