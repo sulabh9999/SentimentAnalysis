@@ -7,7 +7,9 @@ def getReplaceDict():
         'sign up': 'signup',
         'never': 'dont',
         'opening': 'open',
-        'unable to': 'cant'
+        'unable to': 'cant',
+        'does not': 'cant',
+        'doesn\'t': 'cant'
     }
 
 def replaceWords(sentence):

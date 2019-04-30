@@ -1,5 +1,5 @@
 import pandas as pd
-from . import SConstants
+from config.sConstants import SConstants
 from datetime import datetime
 
 
@@ -80,25 +80,27 @@ def getListOfComments(betweenDates): # ['start_date', 'end_date']
     commentsList = commentsList.sort_values(by='ratings', ascending=True)
     return commentsList.query("ratings > 0 and ratings < 3")['comments'] 
 
-def getListOfCommentsFromPkl(betweenDates): # ['start_date', 'end_date']
-    import pandas as pd
+
+def getListOfCommentsFromPkl(betweenDates, ascending=False, fromFile=SConstants.pkl.source): # ['start_date', 'end_date']
+    print('Input comments from file: [%s]' % fromFile)
+    print('Between dates: ', betweenDates)
     ### This is to get csv rows between given date.pkls
-    comments_file_path = 'android_commens_till_27_02_19.pkl'
+    comments_file_path = fromFile
+    df = pd.read_pickle(comments_file_path)
+    print('file shape: ', df.shape)
     commentsList = []
     if len(betweenDates) == 2:
         start_date = betweenDates[0]
         end_date = betweenDates[1]
-        df = pd.read_pickle(comments_file_path)
         df['formatedDate']=pd.to_datetime(df['date'])
         df.sort_values(by=['formatedDate'], ascending=True, inplace=True)
         dateField = df['formatedDate']
         start = datetime.strptime(start_date, '%d-%m-%Y') 
         end = datetime.strptime(end_date, '%d-%m-%Y')
-        df = df.loc[(dateField>='01-01-2018')]
+        df = df.loc[(dateField>=start) & (dateField<=end)]
     else:
-        df = pd.read_pickle(comments_file_path)
         df['formatedDate']=pd.to_datetime(df['date'])
-        df.sort_values(by=['formatedDate'], ascending=True, inplace=True)
+        df.sort_values(by=['formatedDate'], ascending=ascending, inplace=True)
 #     df = df.loc[(dateField>=start) & (dateField<=end)]
 #     df = df.loc[(df['rating'].astype(int) >= 0) & (df['rating'].astype(int) <= 2)] 
 #     commentsList = df.sort_values(by='rating', ascending=True)

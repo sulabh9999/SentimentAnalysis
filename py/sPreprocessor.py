@@ -13,6 +13,8 @@ from . import SNouns
 from . import toReplace
 import re 
 
+# from py.sEmojies import replaceEmojies
+
 # global object for trie WordList
 # _trie = None
 
@@ -99,9 +101,10 @@ class SPreprocessor:
         result = []
         for sentence in multipleSentncs:
             # remove special chars
-            temp = re.sub(r'[^a-zA-Z ]+', '', sentence)
+            temp = re.sub(r'[^a-zA-Z1-9 ]+', '', sentence)
             # replace words with compatable words
             temp = toReplace.replaceWords(temp)
+#             temp = replaceEmojies(temp)
             result.append(temp)
         return result
 
