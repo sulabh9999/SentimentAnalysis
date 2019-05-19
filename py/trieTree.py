@@ -19,6 +19,9 @@ class Trie():
     def __init__(self): 
         self.root = self.getNode() 
 
+    def __removeSpecialChar(self, fromString):
+        return ''.join(i for i in fromString if i.isalpha()) 
+    
     def getNode(self): 
         return TrieNode() 
 
@@ -69,5 +72,41 @@ class Trie():
         return TrieStatus.unmatched
                 
                 
+      #-------------------------------------------
+    def searchBySentence(self, sentence):
+        wordList = list(map(lambda word: self.__removeSpecialChar(word), sentence.split(' '))) 
+        resultList = []
+        length = len(wordList)
+        storage = [] # store matched word temproarly, to check next combine word.
+#         print('words are: ', wordList)
+        
+        for currIndex in range(length):
+            resultList = resultList + storage
+            storage = []
+            
+            # continue if word is exist in result list, bcs repeation is not allowed.
+            if any(wordList[currIndex] in r for r in resultList):
+                continue
+
+            for nextIndex in range(currIndex, length):
+                if currIndex == nextIndex:
+                    jointWords = wordList[currIndex]  #initialy take first word, dont  joint two words.
+                    storeage = [jointWords]
+                else:
+                    jointWords = ' '.join([jointWords, wordList[nextIndex]]) 
+                 
                 
+                result = self.search(jointWords)
+#                 print('join words: %s status; %s' % (jointWords, result))
+                if result is TrieStatus.matched:
+                    storage = [jointWords]
+                    continue
+                if result in TrieStatus.goNext:
+                    continue
+                if result in TrieStatus.unmatched:
+                    break
+                    
+        resultList = resultList + storage
+        return resultList  
+    
                 

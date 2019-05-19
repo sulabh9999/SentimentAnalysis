@@ -19,9 +19,9 @@ class DBCore:
                 print('Mysql database connection failed') 
         except pymysql.Error as err:
             print("..Exception message:", err.args)
+            
    
-#     def store(self):
-#         pass
+   
     
     def storeOperation(self, table, comment_id, process_doc, topics, reasons, date, rating, platform, prouct):
 #         total = len(topics) * len(reasons)
